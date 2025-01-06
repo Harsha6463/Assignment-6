@@ -36,8 +36,14 @@ function Formdata() {
       [name]: value,
     });
   };
-
-
+  const [submittedData, setSubmittedData] = useState(null); 
+ const Submit = (e) => {
+    e.preventDefault();
+    if (formValid) {
+      setSubmittedData(formData); 
+      console.log('Form submitted', formData);
+    }
+  };
 
 
   return (
@@ -81,6 +87,13 @@ function Formdata() {
         Submit
       </button>
       </div>
+               {submittedData && (
+        <div>
+          <h2>Form Data</h2>
+          <p>Name: {submittedData.name}</p>
+          <p>Email:{submittedData.email}</p>
+          <p>Password: {submittedData.password}</p>
+        </div>
     </form>
     
     </div>
